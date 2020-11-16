@@ -20,21 +20,10 @@ function Book(title, author, pages, read){
 }
 
 let myLibrary = [];
-let newBooks = [];
 
 function addBookToLibrary(book){
   myLibrary.push(book)
 }
-
-let book1 = new Book('The Hoobit', 'Tolkien', 1000, false);
-let book2 = new Book('Diary', 'Tadeu', 100, true);
-let book3 = new Book('Some book', 'Some author', 500, false);
-let book4 = new Book('Another book', 'Same author', 20, false);
-
-addBookToLibrary(book1);
-addBookToLibrary(book2);
-addBookToLibrary(book3);
-addBookToLibrary(book4);
 
 function printLibrary(){
   document.getElementById('printing').innerHTML = '';
@@ -51,6 +40,7 @@ function printLibrary(){
     button.onclick = function() {deleteBook(i)};
     button.innerHTML = 'Delete';
 
+    // change status button
     let button2 = document.createElement('button');
     button2.classList.add("btn", "btn-primary","ml-2");
     button2.onclick = function() {changeStatus(i)};
@@ -66,7 +56,6 @@ function printLibrary(){
 }
 
 function changeStatus(book_id){
-  //(myLibrary.splice(book_id, 1));
   if(myLibrary[book_id].read) {
     myLibrary[book_id].read = false;
   }
@@ -82,12 +71,9 @@ function deleteBook(book_id){
 
   (myLibrary.splice(book_id, 1));
 
-
   printLibrary();
 
 }
-
-let book;
 
 function NewBook(){
   let title = document.getElementById('title').value;
