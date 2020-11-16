@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  </head>
+  <body class="container">
+    <main class="d-flex justify-content-center align-items-center flex-column">
+      <div class="card w-50">
+        <div class="card-header">
+          My Library
+        </div>
+        <ul id="printing" class="list-group list-group-flush">
+        </ul>
+      </div>
+
+      <form id="form" action="" class="d-none form-group border w-50 mt-3 p-3 rounded">
+        <div>
+          <label for="title" class="form-text">Title:</label>
+          <input type="text" id="title" class="form-control" name="title">
+        </div>
+        <div>
+          <label for="author" class="form-text">Author:</label>
+          <input type="text" id="author" class="form-control" name="author">
+        </div>
+        <div>
+          <label for="pages" class="form-text">Pages:</label>
+          <input type="text" id="pages" class="form-control" name="pages">
+        </div>
+        <div>
+          <label for="read" class="form-text">Read:</label>
+          <input type="checkbox" value="true" id="read" class="form-check" name="read">
+        </div>
+        <div class="d-flex justify-content-center">
+          <input type="button" class="btn btn-primary" onclick="NewBook()" value="Submit form">
+        </div>
+      </form>
+
+      <div class="mt-3">
+        <div id="show-button" class="btn btn-success" onclick="showForm()">Add book</div>
+        <div id="hide-button" class="btn btn-danger d-none" onclick="hideForm()">Hide form</div>
+      </div>
+    </main>
+
+    <script src="main.js"></script>
+
+    <!-- jQuery and JS bundle w/ Popper.js -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  </body>
+</html>
