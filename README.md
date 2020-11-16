@@ -24,7 +24,7 @@
 ## Authors
 👤 This is us:
 
-- [Jessica Farias](https://jessicafarias.me)
+- [Jessica Farias](http://jessicafarias.me)
 - [Tadeu A Sarro](https://tadeuasarro.web.app)
 
 
