@@ -10,6 +10,7 @@ function Book(title, author, pages, read){
 }
 
 let myLibrary = [];
+let newBooks = [];
 
 function addBookToLibrary(book){
   myLibrary.push(book)
@@ -28,11 +29,23 @@ addBookToLibrary(book4);
 function printLibrary(){
   for (let i in myLibrary){
     let j = document.createElement('li');
+
+    let u = document.createElement('span');
+    u.innerHTML = myLibrary[i].info();
+
+    let button = document.createElement('button');
+    button.classList.add("btn", "btn-danger");
+    button.innerHTML = 'Delete';
+
     j.classList.add('list-group-item');
-    let u = document.createTextNode(myLibrary[i].info());
     j.appendChild(u);
+    j.appendChild(button);
     document.getElementById('printing').appendChild(j);
   }
+}
+
+function createButton(){
+
 }
 
 let book;
@@ -42,10 +55,27 @@ function NewBook(){
   let author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
   let read = document.getElementById('read').value;
-  
-  console.log(title);
   book = new Book(title, author, pages, read);
-  console.log(book);
+
+  document.getElementById('printing').innerHTML = '';
+
   addBookToLibrary(book);
+
   printLibrary();
 }
+
+function showForm(){
+  document.getElementById('form').classList.remove('d-none');
+  document.getElementById('form').classList.add('d-block');
+  document.getElementById('hide-button').classList.add('d-block');
+  document.getElementById('show-button').classList.add('d-none');
+}
+
+function hideForm(){
+  document.getElementById('form').classList.remove('d-block');
+  document.getElementById('form').classList.add('d-none');
+  document.getElementById('hide-button').classList.remove('d-block');
+  document.getElementById('show-button').classList.remove('d-none');
+}
+
+printLibrary();
