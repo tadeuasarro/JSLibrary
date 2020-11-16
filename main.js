@@ -5,8 +5,18 @@ function Book(title, author, pages, read){
   this.read = read;
 
   this.info = function(){
-    return("This book is called " + this.title + " from " + this.author + " and it has " + this.pages + " pages.");
+    return("This book is called " + this.title + " from " + this.author + " and it has " + this.pages + " pages and" + this.convert());
   }
+
+  this.convert = function(){
+    if (this.read){
+      return ' this book has been read';
+    }
+    else {
+      return ' this book has NOT been read';
+    }
+  }
+
 }
 
 let myLibrary = [];
@@ -27,6 +37,8 @@ addBookToLibrary(book3);
 addBookToLibrary(book4);
 
 function printLibrary(){
+  document.getElementById('printing').innerHTML = '';
+
   for (let i in myLibrary){
     let j = document.createElement('li');
 
@@ -39,18 +51,37 @@ function printLibrary(){
     button.onclick = function() {deleteBook(i)};
     button.innerHTML = 'Delete';
 
+    let button2 = document.createElement('button');
+    button2.classList.add("btn", "btn-primary","ml-2");
+    button2.onclick = function() {changeStatus(i)};
+    button2.innerHTML = 'Change status';
+
     j.classList.add('list-group-item');
     j.id = 'book' + i;
     j.appendChild(u);
     j.appendChild(button);
+    j.appendChild(button2);
     document.getElementById('printing').appendChild(j);
   }
 }
 
+function changeStatus(book_id){
+  //(myLibrary.splice(book_id, 1));
+  if(myLibrary[book_id].read) {
+    myLibrary[book_id].read = false;
+  }
+  else {
+    myLibrary[book_id].read = true;
+  }
+
+  printLibrary();
+
+}
+
 function deleteBook(book_id){
+
   (myLibrary.splice(book_id, 1));
 
-  document.getElementById('printing').innerHTML = '';
 
   printLibrary();
 
@@ -62,11 +93,8 @@ function NewBook(){
   let title = document.getElementById('title').value;
   let author = document.getElementById('author').value;
   let pages = document.getElementById('pages').value;
-  let read = document.getElementById('read').value;
+  let read = document.getElementById('read').checked;
   book = new Book(title, author, pages, read);
-
-  document.getElementById('printing').innerHTML = '';
-
   addBookToLibrary(book);
 
   printLibrary();
