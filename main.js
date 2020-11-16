@@ -30,21 +30,29 @@ function printLibrary(){
   for (let i in myLibrary){
     let j = document.createElement('li');
 
-    let u = document.createElement('span');
+    let u = document.createElement('p');
     u.innerHTML = myLibrary[i].info();
 
+    // delete button
     let button = document.createElement('button');
     button.classList.add("btn", "btn-danger");
+    button.onclick = function() {deleteBook(i)};
     button.innerHTML = 'Delete';
 
     j.classList.add('list-group-item');
+    j.id = 'book' + i;
     j.appendChild(u);
     j.appendChild(button);
     document.getElementById('printing').appendChild(j);
   }
 }
 
-function createButton(){
+function deleteBook(book_id){
+  (myLibrary.splice(book_id, 1));
+
+  document.getElementById('printing').innerHTML = '';
+
+  printLibrary();
 
 }
 
