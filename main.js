@@ -1,3 +1,8 @@
+/* eslint no-restricted-syntax: "off", curly: "off" */
+/* eslint no-use-before-define: "off", curly: "off" */
+/* eslint no-unused-vars: "off", curly: "off" */
+/* eslint func-names: "off", curly: "off" */
+
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
@@ -23,34 +28,37 @@ function printLibrary() {
   document.getElementById('printing').innerHTML = '';
 
   for (const i in myLibrary) {
-    const j = document.createElement('li');
+    if (i) {
+      const j = document.createElement('li');
 
-    const u = document.createElement('p');
-    u.innerHTML = myLibrary[i].info();
+      const u = document.createElement('p');
+      u.innerHTML = myLibrary[i].info();
 
-    // delete button
-    const button = document.createElement('button');
-    button.classList.add('btn', 'btn-danger');
-    button.onclick = function () { deleteBook(i); };
-    button.innerHTML = 'Delete';
+      // delete button
+      const button = document.createElement('button');
+      button.classList.add('btn', 'btn-danger');
+      button.onclick = function () { deleteBook(i); };
+      button.innerHTML = 'Delete';
 
-    // change status button
-    const button2 = document.createElement('button');
-    button2.classList.add('btn', 'btn-primary', 'ml-2');
-    button2.onclick = function () { changeStatus(i); };
-    button2.innerHTML = 'Change status';
+      // change status button
+      const button2 = document.createElement('button');
+      button2.classList.add('btn', 'btn-primary', 'ml-2');
+      button2.onclick = function () { changeStatus(i); };
+      button2.innerHTML = 'Change status';
 
-    j.classList.add('list-group-item');
-    j.id = `book${i}`;
-    j.appendChild(u);
-    j.appendChild(button);
-    j.appendChild(button2);
-    document.getElementById('printing').appendChild(j);
+      j.classList.add('list-group-item');
+      j.id = `book${i}`;
+      j.appendChild(u);
+      j.appendChild(button);
+      j.appendChild(button2);
+      document.getElementById('printing').appendChild(j);
+    }
   }
 }
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
+  printLibrary();
 }
 
 function deleteBook(bookId) {
