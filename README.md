@@ -6,14 +6,14 @@
 - Display the form to add new books;
 - Add new books to the library;
 - Delete the books in the library;
-- Switch the books' status between READ and UNREAD;
+- Switch the books' status between READ and UNREAD.
 
 #### Screenshot
 
 ![screenshot](screenshot.png)
 
 #### Livedemo
-- [Githack]()
+- [Githack](https://rawcdn.githack.com/tadeuasarro/JSLibrary/38f699d025256f9a975bd4b614b7175f4b4b00bf/index.html)
 
 
 ## Getting started
