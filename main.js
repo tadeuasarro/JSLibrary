@@ -3,24 +3,27 @@
 /* eslint no-unused-vars: "off", curly: "off" */
 /* eslint func-names: "off", curly: "off" */
 
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+const Book = (title, author, pages, read) => {
+  const getTitle = () => title;
+  const getAuthor = () => author;
+  const getPages = () => pages;
+  const getRead = () => read;
 
-  this.info = function () {
-    return (`This book is called ${this.title} from ${this.author} and it has ${this.pages} pages and${this.convert()}`);
+  const info = () => {
+    return (`This book is called ${title} from ${author} and it has ${pages} pages and${convert()}`);
   };
 
-  this.convert = function () {
-    if (this.read) {
-      return ' this book has been read';
-    }
+  const convert = () => {
+    if(read){
+      return ' this book has been read!';
+    };
 
-    return ' this book has NOT been read';
+    return ' this book has NOT been read!';
   };
-}
+
+  return {title, author, pages, read, info, convert};
+
+};
 
 const myLibrary = [];
 
@@ -32,6 +35,7 @@ function printLibrary() {
       const j = document.createElement('li');
 
       const u = document.createElement('p');
+      console.log(myLibrary[i].info)
       u.innerHTML = myLibrary[i].info();
 
       // delete button
@@ -58,7 +62,6 @@ function printLibrary() {
 
 function addBookToLibrary(book) {
   myLibrary.push(book);
-  printLibrary();
 }
 
 function deleteBook(bookId) {
@@ -82,7 +85,8 @@ function NewBook() {
   const author = document.getElementById('author').value;
   const pages = document.getElementById('pages').value;
   const read = document.getElementById('read').checked;
-  const book = new Book(title, author, pages, read);
+  const book = Book(title, author, pages, read);
+  console.log(typeof book)
   addBookToLibrary(book);
 
   printLibrary();
